@@ -1,0 +1,19 @@
+{
+  "name": "calculadora",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasCMota/Calculadora-SVG.git"
+  },
+  "author": "Lucas Compasso Mota <lucasmotta888@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucasCMota/Calculadora-SVG/issues"
+  },
+  "homepage": "https://github.com/LucasCMota/Calculadora-SVG#readme"
+}
