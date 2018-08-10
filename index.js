@@ -1,2 +1,3 @@
-const CalcController = require ('./src/controller/calcController.js');
-window.calculator = new CalcController()
+const CalcController = require('./src/controller/calcController.js');
+
+window.Calculator = new CalcController

@@ -45,7 +45,8 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	var CalcController = __webpack_require__(1);
-	window.calculator = new CalcController();
+
+	window.Calculator = new CalcController();
 
 /***/ }),
 /* 1 */
@@ -62,19 +63,47 @@
 	    this._displayCalcEl = document.querySelector('#display');
 	    this._dateEl = document.querySelector('#data');
 	    this._timeEl = document.querySelector('#hora');
-	    this._currentDate = 0;
+	    this._currentDate;
 	    this.initializer();
+	    this.initButtonsEvents();
 	  }
 
 	  _createClass(CalcController, [{
-	    key: 'initializer',
-	    value: function initializer() {
+	    key: 'addEventListenerAll',
+	    value: function addEventListenerAll(element, events, func) {
+	      events.split(' ').forEach(function (event) {
+	        element.addEventListener(event, func, false);
+	      });
+	    }
+	  }, {
+	    key: 'initButtonsEvents',
+	    value: function initButtonsEvents() {
 	      var _this = this;
 
+	      var buttons = document.querySelectorAll('#buttons > g, #parts > g');
+	      buttons.forEach(function (btn) {
+	        _this.addEventListenerAll(btn, 'click drag', function () {});
+
+	        _this.addEventListenerAll(btn, 'mouseup mousedown mouseover', function () {
+	          btn.style.cursor = 'pointer';
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'initializer',
+	    value: function initializer() {
+	      var _this2 = this;
+
+	      this.setDisplayTime();
 	      setInterval(function () {
-	        _this.displayDate = _this.currentDate.toLocaleDateString('pt-BR');
-	        _this.displayTime = _this.currentDate.toLocaleTimeString('pt-BR');
+	        _this2.setDisplayTime();
 	      }, 1000);
+	    }
+	  }, {
+	    key: 'setDisplayTime',
+	    value: function setDisplayTime() {
+	      this.displayDate = this.currentDate.toLocaleDateString('pt-BR');
+	      this.displayTime = this.currentDate.toLocaleTimeString('pt-BR');
 	    }
 	  }, {
 	    key: 'displayDate',
@@ -82,7 +111,7 @@
 	      return this._dateEl.innerHTML;
 	    },
 	    set: function set(value) {
-	      return this._dateEl.innerHTML = new Date().toLocaleString('pt-br');
+	      this._dateEl.innerHTML = value;
 	    }
 	  }, {
 	    key: 'displayTime',
@@ -90,7 +119,7 @@
 	      return this._timeEl.innerHTML;
 	    },
 	    set: function set(value) {
-	      return this._timeEl.innerHTML = value;
+	      this._timeEl.innerHTML = value;
 	    }
 	  }, {
 	    key: 'displayCalc',
@@ -101,7 +130,7 @@
 	      this._displayCalcEl.innerHTML = value;
 	    }
 	  }, {
-	    key: 'currrentDate',
+	    key: 'currentDate',
 	    get: function get() {
 	      return new Date();
 	    },
