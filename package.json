@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "./node_modules/.bin/webpack --colors --progress",
+    "watch": "npm run build -- --watch"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,16 @@
   "bugs": {
     "url": "https://github.com/LucasCMota/Calculadora-SVG/issues"
   },
-  "homepage": "https://github.com/LucasCMota/Calculadora-SVG#readme"
+  "homepage": "https://github.com/LucasCMota/Calculadora-SVG#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015-native-modules": "^6.9.4",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "webpack": "^1.15.0"
+  },
+  "dependencies": {}
 }
